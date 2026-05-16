@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="The Tejano/Conjunto Music Academy — San Antonio's only music academy dedicated to Tejano and Conjunto instruction. Located inside the Totally Tejano Hall of Fame & Museum."/>
+<title>TCMA — The Tejano/Conjunto Music Academy | San Antonio, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --black:#080705;
+  --ink:#111009;
+  --card:#161208;
+  --gold:#C9980A;
+  --gold2:#E8B520;
+  --gold3:#F5D060;
+  --cream:#F7F0DC;
+  --muted:#8C7A4E;
+  --border:rgba(201,152,10,.18);
+  --border2:rgba(201,152,10,.08);
+  --red:#9B2614;
+  --r:6px;
+  --nav-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* UTILS */
+.container{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+.gold{color:var(--gold2)}
+.tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,152,10,.4);padding:.28rem .85rem;border-radius:2px;margin-bottom:1rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;margin-bottom:.5rem}
+.section-rule{width:44px;height:2px;background:var(--gold);margin:1rem 0 1.8rem}
+.section-rule.center{margin-left:auto;margin-right:auto}
+.placeholder-note{display:inline-block;background:rgba(201,152,10,.06);border:1px dashed rgba(201,152,10,.25);border-radius:4px;padding:.4rem .85rem;font-size:.72rem;color:var(--muted);font-style:italic}
+
+/* NAV */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);background:rgba(8,7,5,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;transition:box-shadow .3s}
+.site-nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.6)}
+.nav-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0}
+.nav-logo img{width:40px;height:40px;object-fit:contain;display:block}
+.nav-logo img[src=""]{display:none}
+.nav-logo-text{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2);line-height:1}
+.nav-logo-text small{display:block;font-size:.55rem;letter-spacing:.12em;color:var(--muted);font-weight:400;margin-top:.1rem}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nav-links a{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#b0996a;text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold2)}
+.nav-item{position:relative}
+.nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown{position:absolute;top:calc(100% + 10px);left:0;background:#100e09;border:1px solid var(--border);border-radius:var(--r);padding:.5rem 0;min-width:200px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s ease;list-style:none;box-shadow:0 16px 48px rgba(0,0,0,.6)}
+.nav-dropdown li a{display:block;padding:.55rem 1.2rem;font-size:.73rem;color:#9a876a;text-transform:uppercase;letter-spacing:.07em;transition:color .15s,background .15s}
+.nav-dropdown li a:hover{color:var(--gold2);background:rgba(201,152,10,.05)}
+.nav-socials{display:flex;align-items:center;gap:.65rem}
+.nav-socials a{color:#6a5a38;transition:color .2s;display:flex;align-items:center}
+.nav-socials a:hover{color:var(--gold2)}
+.nav-socials svg{width:14px;height:14px;fill:currentColor}
+.nav-cta{background:var(--gold);color:var(--black) !important;padding:.48rem 1.1rem !important;border-radius:3px;font-weight:700 !important;letter-spacing:.08em !important;white-space:nowrap;transition:background .2s !important}
+.nav-cta:hover{background:var(--gold2) !important}
+.nav-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:.4rem}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--gold);border-radius:2px;transition:transform .25s,opacity .25s}
+@media(max-width:900px){
+  .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;flex-direction:column;align-items:flex-start;justify-content:flex-start;background:#0a0805;padding:2rem 1.5rem;gap:0;overflow-y:auto;z-index:800}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%;border-bottom:1px solid var(--border2)}
+  .nav-links a{display:block;padding:.85rem 0;font-size:.88rem}
+  .nav-dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;padding:0 0 0 1rem}
+  .nav-cta{margin-top:1rem;display:inline-block}
+  .nav-toggle{display:flex}
+  .nav-socials{display:none}
+}
+
+/* HERO */
+.hero{padding-top:var(--nav-h);background:var(--black);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,152,10,.09) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 85% 50%,rgba(155,38,20,.05) 0%,transparent 60%);pointer-events:none}
+.hero-pattern{position:absolute;inset:0;pointer-events:none;opacity:.02;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(201,152,10,1) 60px,rgba(201,152,10,1) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(201,152,10,1) 60px,rgba(201,152,10,1) 61px)}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 370px;gap:3rem;align-items:center;max-width:1120px;margin:0 auto;padding:4.5rem 1.5rem 4rem}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;padding:3rem 1.5rem}}
+.hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,152,10,.35);padding:.3rem .9rem;border-radius:2px;display:inline-block;margin-bottom:1.4rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5.5vw,4.4rem);font-weight:600;line-height:1.0;margin-bottom:1rem;letter-spacing:-.01em}
+.hero h1 em{color:var(--gold2);font-style:italic}
+.hero-sub{font-size:1rem;color:#c0aa7a;max-width:460px;line-height:1.65;margin-bottom:2rem;font-weight:300}
+.hero-instruments{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2rem}
+.inst-pill{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(201,152,10,.07);border:1px solid rgba(201,152,10,.22);color:#c9a840;padding:.28rem .7rem;border-radius:2px}
+.hero-meta{font-size:.82rem;color:var(--muted);line-height:2}
+.hero-meta a{color:#a08840;text-decoration:none;transition:color .2s}
+.hero-meta a:hover{color:var(--gold2)}
+.hero-meta strong{color:#c9a840}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.35rem;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-decoration:none;padding:.72rem 1.7rem;border-radius:3px;transition:all .2s;border:2px solid transparent;cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.btn-gold:hover{background:var(--gold2);border-color:var(--gold2)}
+.btn-outline{background:transparent;color:var(--cream);border-color:rgba(247,240,220,.18)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* HERO FORM */
+.hero-form-col{background:rgba(20,16,8,.92);border:1px solid var(--border);border-radius:8px;padding:1.8rem 1.6rem;backdrop-filter:blur(12px);box-shadow:0 24px 80px rgba(0,0,0,.5)}
+.hero-form-col h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:.2rem;color:var(--cream)}
+.hero-form-col .form-sub{font-size:.78rem;color:var(--muted);margin-bottom:1.3rem;line-height:1.5}
+.fgroup{display:flex;flex-direction:column;gap:.28rem;margin-bottom:.75rem}
+.fgroup label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.fgroup input,.fgroup select{background:rgba(255,255,255,.04);border:1px solid rgba(201,152,10,.18);border-radius:4px;padding:.58rem .78rem;color:var(--cream);font-family:'Barlow',sans-serif;font-size:.87rem;outline:none;width:100%;transition:border-color .2s,box-shadow .2s}
+.fgroup input::placeholder{color:#3a2e18}
+.fgroup input:focus,.fgroup select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,152,10,.1)}
+.fgroup select{background:#100e09;cursor:pointer}
+.fgroup select option{background:#100e09}
+.form-submit{width:100%;margin-top:.4rem;background:var(--gold);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;padding:.78rem;border-radius:3px;transition:background .2s}
+.form-submit:hover{background:var(--gold2)}
+.form-note{font-size:.65rem;color:#4a3e22;text-align:center;margin-top:.65rem;line-height:1.5}
+.form-success{display:none;text-align:center;padding:1.5rem .5rem}
+.form-success h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);margin-bottom:.4rem}
+.form-success p{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* TRUST BAR */
+.trust-bar{background:var(--ink);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:1.3rem 1.5rem}
+.trust-items{max-width:1120px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem 2.5rem}
+.trust-item{display:flex;align-items:center;gap:.55rem;font-size:.78rem;color:var(--muted);letter-spacing:.03em}
+.trust-item strong{color:#c9a840;font-weight:600}
+.trust-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* PROGRAMS */
+.programs-section{padding:5.5rem 0;background:var(--black)}
+.programs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-top:2.5rem}
+.prog-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transition:border-color .25s,transform .2s,box-shadow .25s}
+.prog-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.prog-card.featured{border-color:rgba(201,152,10,.4);background:linear-gradient(160deg,rgba(201,152,10,.06),var(--card))}
+.prog-card-img{width:100%;height:175px;background:linear-gradient(135deg,#1a1408,#0d0b06);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border2);position:relative;overflow:hidden}
+.prog-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.35rem}
+.prog-img-placeholder span{font-size:2.2rem}
+.prog-img-placeholder small{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,152,10,.3)}
+.prog-badge{position:absolute;top:10px;left:10px;z-index:2;background:var(--gold);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.2rem .65rem;border-radius:20px}
+.prog-body{padding:1.4rem}
+.prog-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;margin-bottom:.2rem}
+.prog-price{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;color:var(--gold2);margin-bottom:.6rem;letter-spacing:.04em}
+.prog-price span{font-size:.78rem;color:var(--muted);font-weight:400}
+.prog-desc{font-size:.83rem;color:#9a876a;line-height:1.6;margin-bottom:.9rem}
+.prog-features{list-style:none;font-size:.8rem;color:#b09870;line-height:1}
+.prog-features li{padding:.32rem 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:flex-start;gap:.45rem}
+.prog-features li:last-child{border-bottom:none}
+.prog-features li::before{content:"✦";color:var(--gold);font-size:.58rem;margin-top:.1rem;flex-shrink:0}
+.prog-link{display:inline-flex;align-items:center;gap:.3rem;margin-top:1.1rem;font-family:'Barlow Condensed',sans-serif;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap .2s,color .2s}
+.prog-link:hover{gap:.55rem;color:var(--gold2)}
+
+/* INSTRUMENTS */
+.instruments-section{padding:5rem 0;background:var(--ink);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-top:2.5rem}
+.inst-card{background:rgba(255,255,255,.025);border:1px solid var(--border2);border-radius:var(--r);padding:1.5rem 1rem;text-align:center;transition:border-color .2s,background .2s,transform .2s;cursor:default}
+.inst-card:hover{border-color:var(--border);background:rgba(201,152,10,.04);transform:translateY(-2px)}
+.inst-icon{font-size:1.9rem;margin-bottom:.55rem;display:block}
+.inst-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--cream)}
+
+/* INSTRUCTORS */
+.instructors-section{padding:5.5rem 0;background:var(--black)}
+.instructors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;margin-top:2.5rem}
+.instructor-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transition:border-color .2s,transform .2s}
+.instructor-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.instructor-photo{width:100%;height:200px;background:linear-gradient(135deg,#1a1408,#0d0b06);display:flex;align-items:center;justify-content:center;font-size:2.8rem;border-bottom:1px solid var(--border2);overflow:hidden}
+.instructor-photo img{width:100%;height:100%;object-fit:cover}
+.instructor-info{padding:1.2rem}
+.instructor-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:.15rem}
+.instructor-role{font-size:.7rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.instructor-bio{font-size:.78rem;color:var(--muted);line-height:1.55;margin-top:.45rem}
+
+/* EVENTS */
+.events-section{padding:5.5rem 0;background:var(--ink);border-top:1px solid var(--border2)}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;margin-top:2.5rem}
+.event-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transition:border-color .2s,transform .2s}
+.event-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.event-img{width:100%;height:185px;background:linear-gradient(135deg,#1a1408,#0d0b06);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.35rem;overflow:hidden}
+.event-img img{width:100%;height:100%;object-fit:cover}
+.event-img span{font-size:2rem}
+.event-img small{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,152,10,.3)}
+.event-info{padding:1.1rem}
+.event-date{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem}
+.event-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:.25rem}
+.event-desc{font-size:.78rem;color:var(--muted);line-height:1.5}
+.gallery-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:3rem}
+@media(max-width:600px){.gallery-strip{grid-template-columns:repeat(2,1fr)}}
+.gallery-cell{aspect-ratio:1;background:linear-gradient(135deg,#1a1408,#0d0b06);border-radius:4px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.3rem;overflow:hidden;cursor:pointer;transition:opacity .2s,transform .2s}
+.gallery-cell:hover{opacity:.8;transform:scale(.98)}
+.gallery-cell img{width:100%;height:100%;object-fit:cover}
+.gallery-cell span{font-size:1.3rem}
+.gallery-cell small{font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,152,10,.3)}
+
+/* BOOK A BAND */
+.band-section{padding:5.5rem 0;background:var(--black);border-top:1px solid var(--border2)}
+.band-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:700px){.band-inner{grid-template-columns:1fr;gap:2rem}}
+.band-img{aspect-ratio:4/3;background:linear-gradient(135deg,#1a1408,#0d0b06);border-radius:var(--r);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;overflow:hidden}
+.band-img img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.band-img span{font-size:2.8rem}
+.band-img small{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,152,10,.35)}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.8rem}
+.feat-list li{font-size:.86rem;color:#b09870;display:flex;gap:.5rem}
+.feat-list li span{color:var(--gold)}
+
+/* TESTIMONIALS */
+.testimonials-section{padding:5.5rem 0;background:var(--ink);border-top:1px solid var(--border2)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem;margin-top:2.5rem}
+.testi-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:1.6rem;transition:border-color .2s}
+.testi-card:hover{border-color:var(--border)}
+.testi-stars{color:var(--gold);font-size:.82rem;margin-bottom:.75rem;letter-spacing:.08em}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--cream);line-height:1.65;margin-bottom:1.1rem}
+.testi-author{display:flex;align-items:center;gap:.7rem}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:rgba(201,152,10,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;overflow:hidden}
+.testi-avatar img{width:100%;height:100%;object-fit:cover}
+.testi-name{font-size:.8rem;font-weight:600;color:var(--cream)}
+.testi-role{font-size:.7rem;color:var(--muted)}
+
+/* PARTNERS */
+.partners-section{padding:3.5rem 0;background:var(--black);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.partners-label{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:1.8rem}
+.partners-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem 2.5rem}
+.partner-slot{height:46px;background:rgba(255,255,255,.03);border:1px dashed rgba(201,152,10,.18);border-radius:4px;padding:0 1.2rem;display:flex;align-items:center;justify-content:center;min-width:110px}
+.partner-slot span{font-size:.62rem;color:rgba(201,152,10,.28);letter-spacing:.1em;text-transform:uppercase}
+.partner-slot img{max-height:32px;max-width:110px;object-fit:contain;filter:brightness(0) invert(.55)}
+
+/* LOCATION */
+.location-section{padding:5.5rem 0;background:var(--ink)}
+.location-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:700px){.location-inner{grid-template-columns:1fr;gap:2.5rem}}
+.location-map{border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.location-map iframe{display:block;width:100%;height:340px;border:0;filter:grayscale(.6) invert(.88) hue-rotate(175deg) brightness(.8) contrast(.9)}
+.contact-list{list-style:none;margin:1.4rem 0;display:flex;flex-direction:column;gap:.9rem}
+.contact-item{display:flex;align-items:flex-start;gap:.75rem}
+.contact-icon{width:32px;height:32px;border-radius:50%;background:rgba(201,152,10,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;margin-top:.1rem}
+.contact-text{font-size:.86rem;color:var(--muted);line-height:1.5}
+.contact-text strong{display:block;color:#c9a840;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.12rem}
+.contact-text a{color:var(--muted);text-decoration:none;transition:color .2s}
+.contact-text a:hover{color:var(--gold2)}
+.social-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.social-btn{display:flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:3px;padding:.45rem .85rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s}
+.social-btn:hover{border-color:var(--gold);color:var(--gold)}
+.social-btn svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
+
+/* CTA BAND */
+.cta-band{padding:5rem 1.5rem;background:linear-gradient(135deg,#1a1408,#0d0b06);text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(201,152,10,.07),transparent 70%)}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:600;margin-bottom:.65rem;position:relative;z-index:1}
+.cta-band p{color:var(--muted);font-size:.95rem;margin-bottom:1.8rem;position:relative;z-index:1}
+
+/* FOOTER */
+.site-footer{background:#050403;border-top:1px solid var(--border2);padding:4rem 1.5rem 2rem}
+.footer-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
+@media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:1.5rem}}
+.footer-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem}
+.footer-logo img{width:36px;height:36px;object-fit:contain}
+.footer-logo img[src=""]{display:none}
+.footer-logo-text{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}
+.footer-tagline{font-style:italic;font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.footer-socials{display:flex;gap:.55rem}
+.footer-socials a{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.03);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:#5a4a28;transition:color .2s,border-color .2s}
+.footer-socials a:hover{color:var(--gold2);border-color:var(--gold)}
+.footer-socials svg{width:12px;height:12px;fill:currentColor}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--cream)}
+.footer-newsletter input[type=email]{background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:3px;padding:.55rem .75rem;color:var(--cream);font-family:'Barlow',sans-serif;font-size:.8rem;outline:none;width:100%;margin-bottom:.45rem;transition:border-color .2s}
+.footer-newsletter input:focus{border-color:var(--gold)}
+.footer-newsletter input::placeholder{color:#2a2212}
+.footer-newsletter button{width:100%;background:var(--gold);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;padding:.58rem;border-radius:3px;transition:background .2s}
+.footer-newsletter button:hover{background:var(--gold2)}
+.footer-bottom{max-width:1120px;margin:0 auto;padding-top:1.8rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.7rem;color:#3a3020}
+.footer-bottom a{color:#4a4020;text-decoration:none}
+.footer-bottom a:hover{color:var(--muted)}
+
+
+/* SCHEDULE */
+.schedule-section{padding:5rem 0;background:var(--ink);border-top:1px solid var(--border2)}
+.sched-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:2rem}
+.sched-card{border:1px solid var(--border2);border-radius:var(--r);padding:1.4rem;background:rgba(255,255,255,.025);display:flex;gap:.9rem;transition:border-color .2s}
+.sched-card:hover{border-color:var(--border)}
+.sched-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.45rem}
+.sched-day{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.sched-info h4{font-size:.92rem;color:var(--cream);margin-bottom:.15rem;font-weight:600}
+.sched-info p{font-size:.78rem;color:var(--muted);line-height:1.5}
+.sched-card.featured-sched{border-color:rgba(201,152,10,.4);background:rgba(201,152,10,.04)}
+
+/* QUOTE */
+.quote-section{background:var(--black);text-align:center;padding:4rem 1.25rem;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.quote-mark{font-size:3.5rem;color:rgba(201,152,10,.2);line-height:.5;font-family:'Cormorant Garamond',serif;font-weight:600}
+.quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.65rem);max-width:680px;margin:.6rem auto 0;line-height:1.6;color:var(--cream)}
+.quote-text em{color:var(--gold2);font-style:normal}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:640px){.programs-grid,.inst-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="tcma-logo.png" alt="TCMA" onerror="this.style.display='none'"/>
+      <div class="nav-logo-text">TCMA <small>Tejano / Conjunto Music Academy</small></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item">
+        <a href="#programs">Programs ▾</a>
+        <ul class="nav-dropdown">
+          <li><a href="#programs">Foundation — $150/mo</a></li>
+          <li><a href="#programs">Performance Track — $205/mo</a></li>
+          <li><a href="#programs">Artist Track — $285/mo</a></li>
+        </ul>
+      </li>
+      <li><a href="#instruments">Instruments</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#events">Events</a></li>
+      <li class="nav-item">
+        <a href="#about">About ▾</a>
+        <ul class="nav-dropdown">
+          <li><a href="#instructors">Instructors</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="mailto:tcmaeducation@gmail.com">Contact</a></li>
+        </ul>
+      </li>
+      <li class="nav-socials" style="list-style:none">
+        <a href="https://www.instagram.com/tcmaedu" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.856-.085 3.698-.601 5.038-1.942 1.341-1.34 1.857-3.182 1.942-5.038.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.085-1.856-.601-3.698-1.942-5.038C20.645.673 18.803.157 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.facebook.com/tcmaedu" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.696 4.533-4.696 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></a>
+        <a href="https://www.tiktok.com/@tcmaedu" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.84 1.56V6.82a4.85 4.85 0 01-1.07-.13z"/></svg></a>
+      </li>
+      <li><a href="register.html" class="nav-cta">Sign Up →</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🎶 San Antonio, TX · Inside the Totally Tejano Hall of Fame</div>
+      <h1>Where Students<br/>Become <em>Musicians.</em></h1>
+      <p class="hero-sub">San Antonio's only academy dedicated to Tejano and Conjunto — real instruction, real bands, real performance experience.</p>
+      <div class="hero-instruments">
+        <span class="inst-pill">🪗 Accordion</span>
+        <span class="inst-pill">🎸 Bajo Sexto</span>
+        <span class="inst-pill">🎸 Guitar</span>
+        <span class="inst-pill">🎸 Bass</span>
+      </div>
+      <div class="hero-meta">
+        <strong>📍 1414 Fredericksburg Rd, San Antonio, TX 78201</strong><br/>
+        📞 <a href="tel:2108597122">210-859-7122</a> &nbsp;·&nbsp; 📧 <a href="mailto:tcmaeducation@gmail.com">tcmaeducation@gmail.com</a>
+      </div>
+      <div class="hero-btns">
+        <a href="register.html" class="btn btn-gold">Reserve Your Spot →</a>
+        <a href="#programs" class="btn btn-outline">See Programs</a>
+      </div>
+    </div>
+    <div class="hero-form-col">
+      <h3>First Class Free</h3>
+      <p class="form-sub">Sign up and we'll reach out to schedule your first session — no commitment needed.</p>
+      <div id="heroFormWrap">
+        <form id="heroForm">
+          <input type="hidden" name="_subject" value="TCMA — Free Class Request"/>
+          <input type="text" name="_gotcha" style="display:none"/>
+          <div class="fgroup"><label>Full Name *</label><input type="text" name="Full Name" required placeholder="Your name" data-fs-field/><span data-fs-error="Full Name" style="font-size:.68rem;color:#d08060"></span></div>
+          <div class="fgroup"><label>Email *</label><input type="email" name="email" required placeholder="you@email.com" data-fs-field/><span data-fs-error="email" style="font-size:.68rem;color:#d08060"></span></div>
+          <div class="fgroup"><label>Phone *</label><input type="tel" name="Phone" required placeholder="(210) 000-0000" data-fs-field/></div>
+          <div class="fgroup">
+            <label>Instrument</label>
+            <select name="Instrument">
+              <option value="">Select an instrument</option>
+              <option>🪗 Accordion</option><option>🎸 Bajo Sexto</option>
+              <option>🎸 Guitar</option><option>🎸 Bass</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit" data-fs-submit-btn>Get My Free Class →</button>
+          <p class="form-note">By submitting, I agree to allow TCMA to contact me by phone, text, or email regarding my enrollment and program updates.</p>
+        </form>
+      </div>
+      <div class="form-success" id="heroSuccess">
+        <h3>¡Gracias!</h3>
+        <p>We'll be in touch soon to schedule your free class.<br/>Questions? Call <a href="tel:2108597122" style="color:var(--gold2)">210-859-7122</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-items">
+    <div class="trust-item"><div class="trust-dot"></div><span>Only Tejano &amp; Conjunto academy in SA</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>Inside the <strong>Totally Tejano Hall of Fame</strong></span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>Small groups · Real progress</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>Live performance opportunities</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>Beginner to advanced welcome</span></div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag">Choose Your Path</div>
+      <h2 class="section-title">Our Programs</h2>
+      <p style="color:var(--muted);font-size:.92rem;max-width:500px;line-height:1.6">Lessons built around Tejano and Conjunto tradition — from your first chord to your first gig.</p>
+      <div class="section-rule"></div>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card reveal">
+        <div class="prog-card-img"><div class="prog-img-placeholder"><span>🎸</span><small>Add photo here</small></div></div>
+        <div class="prog-body">
+          <div class="prog-name">Foundation</div>
+          <div class="prog-price">$150 <span>/ month</span></div>
+          <p class="prog-desc">Build your groove from the ground up. Perfect for beginners of any age.</p>
+          <ul class="prog-features">
+            <li>2 group classes per month (1 hr each)</li>
+            <li>Timing, chords &amp; Tejano groove</li>
+            <li>All instruments welcome</li>
+            <li>Mon &amp; Tue class options</li>
+          </ul>
+          <a href="register.html" class="prog-link">Enroll Now →</a>
+        </div>
+      </div>
+      <div class="prog-card featured reveal">
+        <div class="prog-card-img">
+          <div class="prog-badge">⭐ Most Popular</div>
+          <div class="prog-img-placeholder"><span>🎶</span><small>Add photo here</small></div>
+        </div>
+        <div class="prog-body">
+          <div class="prog-name">Performance Track</div>
+          <div class="prog-price">$205 <span>/ month</span></div>
+          <p class="prog-desc">This is where students stop practicing and start playing. Wednesday Ensemble Night puts you in a real band every week.</p>
+          <ul class="prog-features">
+            <li>2 group classes per month (1 hr each)</li>
+            <li>Wednesday Night Ensemble — live band</li>
+            <li>Full songs: intros, endings, transitions</li>
+            <li>Stage readiness &amp; real SA performances</li>
+          </ul>
+          <a href="register.html" class="prog-link">Reserve My Spot →</a>
+        </div>
+      </div>
+      <div class="prog-card reveal">
+        <div class="prog-card-img"><div class="prog-img-placeholder"><span>🌟</span><small>Add photo here</small></div></div>
+        <div class="prog-body">
+          <div class="prog-name">Artist Track</div>
+          <div class="prog-price">$285 <span>/ month</span></div>
+          <p class="prog-desc">Everything in Performance Track plus one-on-one private coaching every month.</p>
+          <ul class="prog-features">
+            <li>Everything in Performance Track</li>
+            <li>1 private lesson per month</li>
+            <li>Personalized one-on-one coaching</li>
+            <li>Priority performance spots</li>
+          </ul>
+          <a href="register.html" class="prog-link">Enroll Now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUMENTS -->
+<section class="instruments-section" id="instruments">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="tag">What We Teach</div>
+      <h2 class="section-title">Instruments</h2>
+      <div class="section-rule center"></div>
+    </div>
+    <div class="inst-grid reveal">
+      <div class="inst-card"><span class="inst-icon">🪗</span><div class="inst-name">Accordion</div></div>
+      <div class="inst-card"><span class="inst-icon">🎸</span><div class="inst-name">Bajo Sexto</div></div>
+      <div class="inst-card"><span class="inst-icon">🎸</span><div class="inst-name">Guitar</div></div>
+      <div class="inst-card"><span class="inst-icon">🎸</span><div class="inst-name">Bass</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTORS -->
+<section class="instructors-section" id="instructors">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag">The Team</div>
+      <h2 class="section-title">Our Instructors</h2>
+      <p style="color:var(--muted);font-size:.9rem;max-width:560px;line-height:1.6;margin-bottom:.5rem">TCMA instructors are working musicians — active performers with deep roots in Tejano, Conjunto, and Texas music tradition. They don't just teach the notes, they teach how it actually feels to play.</p>
+      <div class="section-rule"></div>
+    </div>
+    <div class="instructors-grid reveal">
+
+      <!-- John Garza -->
+      <div class="instructor-card">
+        <div class="instructor-photo"><!-- <img src="john-garza.jpg" alt="John Garza"/> -->👤</div>
+        <div class="instructor-info">
+          <div class="instructor-name">John Garza</div>
+          <div class="instructor-role">Guitar · Trumpet · Harmonica</div>
+          <p class="instructor-bio">A San Antonio bandleader and multi-instrumentalist with deep roots in Tejano, Conjunto, jazz, and Texas dance music. John has performed with the Laredo Philharmonic Orchestra, university jazz bands, and Los Nahuatlatos, playing festivals, weddings, and venues like The Carver Community Cultural Center. He brings musical range, showmanship, and a strong connection to South Texas tradition.</p>
+        </div>
+      </div>
+
+      <!-- Raul Joaquin "Muerte" Abrego -->
+      <div class="instructor-card">
+        <div class="instructor-photo"><!-- <img src="joaquin-abrego.jpg" alt="Raul Joaquin Abrego"/> -->👤</div>
+        <div class="instructor-info">
+          <div class="instructor-name">Raul "Muerte" Abrego</div>
+          <div class="instructor-role">Percussion · Bajo Sexto · Piano · Guitar · Vocals</div>
+          <p class="instructor-bio">Formally trained at San Antonio College and UTSA, Joaquin has been performing and recording professionally since 2000 with groups including Los Nahuatlatos, Eddie and The Valiants, and various Conjunto and Chicano soul acts throughout Texas. He brings deep roots in Tejano, psychobilly, and Latin music alongside strong music theory and audio production chops.</p>
+        </div>
+      </div>
+
+      <!-- Carlos Martinez -->
+      <div class="instructor-card">
+        <div class="instructor-photo"><img src="carlos-martinez.png" alt="Carlos Martinez"/></div>
+        <div class="instructor-info">
+          <div class="instructor-name">Carlos Martinez</div>
+          <div class="instructor-role">Accordion · Bajo Sexto · Drums</div>
+          <p class="instructor-bio">A self-taught Tejano and Conjunto accordionist who started playing at 12 and was performing professionally by 13. Carlos has toured nationally, contributed to 20+ album recordings, and shared stages with Ram Herrera, Joe Bravo, Oscar G, and many others. He brings authentic Conjunto style and decades of real-world experience into every lesson.</p>
+        </div>
+      </div>
+
+      <!-- Felipe Iruegas Jr. -->
+      <div class="instructor-card">
+        <div class="instructor-photo"><!-- <img src="felipe-iruegas.jpg" alt="Felipe Iruegas Jr."/> -->👤</div>
+        <div class="instructor-info">
+          <div class="instructor-name">Felipe Iruegas Jr.</div>
+          <div class="instructor-role">Guitar · Bass · Drums · Vocals</div>
+          <p class="instructor-bio">A San Antonio-based multi-instrumentalist with 15+ years of live performance and recording experience across rock, cumbia, Tejano, jazz, funk, and more. Felipe has performed across the US with acts including Los Nahuatlatos and Combo Cosmico, and released his debut album <em>Hope Bliss</em> in 2020.</p>
+        </div>
+      </div>
+
+      <!-- Paul Chavez -->
+      <div class="instructor-card">
+        <div class="instructor-photo"><img src="paul-chavez.png" alt="Paul Chavez"/></div>
+        <div class="instructor-info">
+          <div class="instructor-name">Paul Chavez</div>
+          <div class="instructor-role">Guitar · Vocals</div>
+          <p class="instructor-bio">A veteran guitarist and vocalist with over five decades of live performance spanning Rock, Classic Rock, Top 40, and Tejano. Paul has performed with Sunny Ozuna, Joe Bravo, David Marez, and many others, and brings a rare range of stage experience — from 1970s rock bands to the heart of the Tejano explosion era of the 90s.</p>
+        </div>
+      </div>
+
+      <!-- Stevie Ray Vavages -->
+      <div class="instructor-card">
+        <div class="instructor-photo"><img src="stevie-vavages.png" alt="Stevie Ray Vavages"/></div>
+        <div class="instructor-info">
+          <div class="instructor-name">Stevie Ray Vavages</div>
+          <div class="instructor-role">Bajo Sexto · Ensemble</div>
+          <p class="instructor-bio">Started on Bajo Sexto at 13 in Arizona, performing in Tejano bands by 16. From 2017–2021 he toured with Bobby Pulido across Texas and the Southwest, and has shared the stage with Los Texmaniacs, Flaco Jimenez, and Flavio Longoria. He currently performs with Jaime Deanda's band and brings authentic La Onda groove to every session.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS / GALLERY -->
+<section class="events-section" id="events">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag">Live &amp; Upcoming</div>
+      <h2 class="section-title">Events</h2>
+      <p style="color:var(--muted);font-size:.9rem;max-width:500px;line-height:1.6">TCMA students perform at real SA venues, Fiesta events, quinceañeras, and community shows throughout the year.</p>
+      <div class="section-rule"></div>
+    </div>
+    <div class="events-grid reveal">
+      <div class="event-card">
+        <div class="event-img"><!-- <img src="event.jpg" alt=""/> --><span>🎤</span><small>Add photo</small></div>
+        <div class="event-info">
+          <div class="event-date"><!-- ✏️ Date --></div>
+          <div class="event-title">Upcoming Performance</div>
+          <p class="event-desc"><!-- ✏️ Add event details --></p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img"><span>🎶</span><small>Add photo</small></div>
+        <div class="event-info">
+          <div class="event-date"><!-- ✏️ Date --></div>
+          <div class="event-title">Upcoming Performance</div>
+          <p class="event-desc"><!-- ✏️ Add event details --></p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img"><span>🪗</span><small>Add photo</small></div>
+        <div class="event-info">
+          <div class="event-date"><!-- ✏️ Date --></div>
+          <div class="event-title">Upcoming Performance</div>
+          <p class="event-desc"><!-- ✏️ Add event details --></p>
+        </div>
+      </div>
+    </div>
+    <!-- GALLERY -->
+    <div style="margin-top:4rem">
+      <h3 class="section-title reveal" style="font-size:1.5rem;margin-bottom:.4rem">Photos</h3>
+      <div class="section-rule reveal"></div>
+      <div class="gallery-strip reveal">
+        <!-- ✏️ Replace each cell: remove span/small, add <img src="your-photo.jpg" alt=""/> -->
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+        <div class="gallery-cell"><span>📸</span><small>Add photo</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote-text">The classes teach you the notes…<br/>the ensemble teaches you <em>the music.</em></p>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section" id="schedule">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag">Weekly Schedule</div>
+      <h2 class="section-title">When We Play</h2>
+      <p style="color:var(--muted);font-size:.9rem;max-width:500px;line-height:1.6">Placement depends on student level, instrument, and instructor availability.</p>
+      <div class="section-rule"></div>
+    </div>
+    <div class="sched-grid reveal">
+      <div class="sched-card">
+        <div class="sched-dot"></div>
+        <div>
+          <div class="sched-day">Monday</div>
+          <div class="sched-info">
+            <h4>5:30 PM · Guitar</h4><p>Group class</p>
+            <h4 style="margin-top:.5rem">7:15 PM · Accordion</h4><p>Group class</p>
+          </div>
+        </div>
+      </div>
+      <div class="sched-card">
+        <div class="sched-dot"></div>
+        <div>
+          <div class="sched-day">Tuesday</div>
+          <div class="sched-info">
+            <h4>5:30 PM · Bass</h4><p>Group class</p>
+            <h4 style="margin-top:.5rem">7:15 PM · Bajo Sexto</h4><p>Group class</p>
+          </div>
+        </div>
+      </div>
+      <div class="sched-card featured-sched">
+        <div class="sched-dot" style="background:var(--gold2);box-shadow:0 0 8px var(--gold)"></div>
+        <div>
+          <div class="sched-day" style="color:var(--gold2)">Wednesday</div>
+          <div class="sched-info">
+            <h4 style="color:var(--gold2)">7:00 PM – 9:00 PM · Ensemble Night</h4>
+            <p>Performance Track and Artist Track students play in a live band setting.</p>
+          </div>
+        </div>
+      </div>
+      <div class="sched-card">
+        <div class="sched-dot"></div>
+        <div>
+          <div class="sched-day">Saturday</div>
+          <div class="sched-info">
+            <h4>Additional Group Classes</h4>
+            <p>Saturday classes available as enrollment grows. Times confirmed during registration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK A BAND -->
+<section class="band-section" id="book-band">
+  <div class="container">
+    <div class="band-inner reveal">
+      <div class="band-img">
+        <!-- ✏️ Add a real band photo: <img src="band-photo.jpg" alt="TCMA Student Band"/> -->
+        <span>🎸</span><small>Add band photo</small>
+      </div>
+      <div>
+        <div class="tag">Available for Hire</div>
+        <h2 class="section-title">Book a TCMA Student Band</h2>
+        <div class="section-rule"></div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1.4rem">Our Performance Track and Artist Track students are ready to play your event. Authentic Tejano and Conjunto repertoire. Booking fees support the academy.</p>
+        <ul class="feat-list">
+          <li><span>✦</span> Quinceañeras &amp; private events</li>
+          <li><span>✦</span> Fiesta SA &amp; community events</li>
+          <li><span>✦</span> Classic Tejano &amp; Conjunto repertoire</li>
+          <li><span>✦</span> Booking supports the academy</li>
+        </ul>
+        <a href="mailto:tcmaeducation@gmail.com?subject=Book a TCMA Student Band" class="btn btn-gold">Book Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="tag">What Families Say</div>
+      <h2 class="section-title">Student Stories</h2>
+      <div class="section-rule center"></div>
+      <div class="placeholder-note">✏️ Replace cards below with real testimonials as you collect them</div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"<!-- ✏️ Add quote -->"</div>
+        <div class="testi-author">
+          <div class="testi-avatar"><!-- <img src="avatar.jpg"/> -->👤</div>
+          <div><div class="testi-name"><!-- ✏️ Name --></div><div class="testi-role"><!-- ✏️ e.g. Parent of Foundation student --></div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"<!-- ✏️ Add quote -->"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👤</div>
+          <div><div class="testi-name"><!-- ✏️ Name --></div><div class="testi-role"><!-- ✏️ Role --></div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"<!-- ✏️ Add quote -->"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👤</div>
+          <div><div class="testi-name"><!-- ✏️ Name --></div><div class="testi-role"><!-- ✏️ Role --></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section" id="partners">
+  <div class="container">
+    <p class="partners-label">Partners &amp; Community</p>
+    <div class="partners-logos">
+      <!-- ✏️ Replace slots with real logos -->
+      <div class="partner-slot"><span>Partner Logo</span></div>
+      <div class="partner-slot"><span>Partner Logo</span></div>
+      <div class="partner-slot"><span>Partner Logo</span></div>
+      <div class="partner-slot"><span>Partner Logo</span></div>
+      <div class="partner-slot"><span>Partner Logo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <div class="container">
+    <div class="location-inner reveal">
+      <div>
+        <div class="tag">Find Us</div>
+        <h2 class="section-title">Location</h2>
+        <div class="section-rule"></div>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text"><strong>Address</strong>Inside the Totally Tejano Hall of Fame &amp; Museum<br/>1414 Fredericksburg Rd · San Antonio, TX 78201</div>
+          </li>
+          <li class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text"><strong>Phone / Text</strong><a href="tel:2108597122">210-859-7122</a></div>
+          </li>
+          <li class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-text"><strong>Email</strong><a href="mailto:tcmaeducation@gmail.com">tcmaeducation@gmail.com</a></div>
+          </li>
+          <li class="contact-item">
+            <div class="contact-icon">📅</div>
+            <div class="contact-text"><strong>Schedule</strong>Mon &amp; Tue — Group Classes<br/>Wed — Ensemble Night</div>
+          </li>
+        </ul>
+        <div class="social-row">
+          <a class="social-btn" href="https://www.instagram.com/tcmaedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.856-.085 3.698-.601 5.038-1.942 1.341-1.34 1.857-3.182 1.942-5.038.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.085-1.856-.601-3.698-1.942-5.038C20.645.673 18.803.157 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram</a>
+          <a class="social-btn" href="https://www.facebook.com/tcmaedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.696 4.533-4.696 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook</a>
+          <a class="social-btn" href="https://www.tiktok.com/@tcmaedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.84 1.56V6.82a4.85 4.85 0 01-1.07-.13z"/></svg> TikTok</a>
+        </div>
+      </div>
+      <div class="location-map">
+        <iframe title="TCMA Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3469.84!2d-98.5151!3d29.4741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865cf5ef4c3b1b3b%3A0x1!2s1414+Fredericksburg+Rd%2C+San+Antonio%2C+TX+78201!5e0!3m2!1sen!2sus!4v1" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="tag">Limited Spots</div>
+  <h2>Ready to Learn La Onda?</h2>
+  <p>Small classes. Real music. San Antonio's own Tejano tradition.</p>
+  <a href="register.html" class="btn btn-gold">Sign Up for Classes →</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="tcma-logo.png" alt="TCMA" onerror="this.style.display='none'"/>
+        <div class="footer-logo-text">TCMA</div>
+      </div>
+      <p class="footer-tagline">The Tejano/Conjunto Music Academy.<br/>Preserving the Sound. Teaching La Onda.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/tcmaedu" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.856-.085 3.698-.601 5.038-1.942 1.341-1.34 1.857-3.182 1.942-5.038.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.085-1.856-.601-3.698-1.942-5.038C20.645.673 18.803.157 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.facebook.com/tcmaedu" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.696 4.533-4.696 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></a>
+        <a href="https://www.tiktok.com/@tcmaedu" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.84 1.56V6.82a4.85 4.85 0 01-1.07-.13z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul class="footer-links">
+        <li><a href="#programs">Foundation — $150/mo</a></li>
+        <li><a href="#programs">Performance Track — $205/mo</a></li>
+        <li><a href="#programs">Artist Track — $285/mo</a></li>
+        <li><a href="register.html">Sign Up →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul class="footer-links">
+        <li><a href="#instruments">Instruments</a></li>
+        <li><a href="#instructors">Instructors</a></li>
+        <li><a href="#events">Events &amp; Gallery</a></li>
+        <li><a href="#book-band">Book a Student Band</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Stay in the Loop</h4>
+      <p style="font-size:.76rem;color:var(--muted);margin-bottom:.75rem;line-height:1.5">Updates on events, openings, and academy news.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="your@email.com"/>
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TCMA — The Tejano/Conjunto Music Academy. All rights reserved.</span>
+    <span>1414 Fredericksburg Rd · San Antonio, TX 78201 · <a href="tel:2108597122">210-859-7122</a></span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{document.getElementById('siteNav').classList.toggle('scrolled',window.scrollY>20)})
+
+// Mobile toggle
+const tog=document.getElementById('navToggle'),nl=document.getElementById('navLinks')
+tog.addEventListener('click',()=>{
+  nl.classList.toggle('open')
+  const s=tog.querySelectorAll('span')
+  const o=nl.classList.contains('open')
+  s[0].style.transform=o?'rotate(45deg) translate(4px,4px)':''
+  s[1].style.opacity=o?'0':''
+  s[2].style.transform=o?'rotate(-45deg) translate(4px,-4px)':''
+})
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.1})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+
+// Hero form Formspree
+window.formspree=window.formspree||function(){(formspree.q=formspree.q||[]).push(arguments)}
+formspree('initForm',{formElement:'#heroForm',formId:'mjgjlpnk',onSuccess:function(){
+  document.getElementById('heroFormWrap').style.display='none'
+  document.getElementById('heroSuccess').style.display='block'
+}})
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
